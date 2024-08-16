@@ -12,5 +12,5 @@ async(callApi("https://api-pizzeria.vercel.app/api/v1/products"))()
 
 document.getElementById('login_form').addEventListener('submit', function(event) {
   event.preventDefault(); // Evita el envío del formulario por defecto
-  window.location.href = 'index.html'; // Redirige a index.html
+  window.location.href = 'products.html'; // Redirige a index.html
 })
