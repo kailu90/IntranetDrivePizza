@@ -132,13 +132,17 @@ main {
 .parragraph {
     font-size: 20px;
     margin: 0 auto 40px auto;
+    text-align: center;
 }
 
-form {
+.form_products {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
+
+
 
 .list_products {
     display: block;
@@ -154,17 +158,38 @@ form {
     margin: 10px 0;
 }
 
-ul li label {
+.day_dalivery {
+    margin: 0 auto 30px auto;
+}
+
+.list_location label, .list_location select {
+    width: 50%;
+    display: flex;  
+    justify-content: center;
+}
+
+.day_dalivery label, .day_dalivery select {
+    width: 50%;
+    display: flex;  
+    justify-content: center;
+}
+
+.product select {
+    width: 70px;
+    display: flex;  
+    justify-content: center;
+}
+
+.product label {
     width: 50%;
 }
 
-ul li select {
+.product select , .day_dalivery select , .list_location select  {
     text-align: center;
     font-weight: bold;
-    width: 50px;
 }
 
-ul li select:hover {
+.list_location select:hover, .day_dalivery select:hover , .list_products select:hover {
     opacity: 0.8;
     cursor: pointer;
 }
@@ -195,4 +220,20 @@ ul li select:hover {
 .btn:hover {
     opacity: 0.8;
     cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .title_order {
+        font-size: 50px;
+     }     
+
+     .parragraph {
+        max-width: 90vw;
+        padding: 10px;
+        font-size: 14px;
+     }
+     
+    .form_products  {
+        width: 100vw;
+    } 
 }

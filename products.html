@@ -14,9 +14,9 @@
     <h1 class="title_order">PRODUCTOS</h1>
     <p class="parragraph">Selecciona los productos que se requieren para
     las labores del día a día</p>
-    <form action="" method="POST">
+    <form class="form_products" action="" method="POST">
         <ul class="list_products">
-            <li class="list_location">
+            <li class="list_location" required>
                 <label>SEDE</label>
                 <select name="location" id="location">
                     <option value="0">Seleccionar</option>
@@ -29,7 +29,7 @@
             </li>
             <li class="day_dalivery">
                 <label>DIA DE ENTREGA</label>
-                <select name="day_dalivery" id="day_dalivery">
+                <select name="day_dalivery" id="day_dalivery" required>
                     <option value="0">Seleccionar</option>
                     <option value="LUNES">LUNES</option>
                     <option value="MARTES">MARTES</option>
