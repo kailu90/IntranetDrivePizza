@@ -203,9 +203,10 @@ main {
 
 .observation_box {
     display: flex;
-    width: 100%;
+    width: 80%;
     height: 200px;
     padding: 10px;
+    margin: 0 auto;
 }
 
 .orders_btn {
