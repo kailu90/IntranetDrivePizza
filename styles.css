@@ -108,16 +108,12 @@ li {
 /*********************ORDENES********************/
 .logo_orders {
     display: flex;
-    width: 200px;
-    height: 100px;
+    width: auto;
+    height: 150px;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
     padding: 20px;
-}
-
-header {
-    background-color: white;
 }
 
 main {
