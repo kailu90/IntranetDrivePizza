@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="./Imagenes/logo_drive.png" type="image/x-icon">
+    <title>Carrito de Compras</title>
+</head>
+<body>
+    <header class="car_header">
+        <h1>Carrito de compras</h1>
+        <img src="./Imagenes/logo_drive.png" alt="logo drive pizza">
+    </header>
+    <form class="car_container">
+        <ul class="car_product_list">
+            <li class="car_product car_subtitle_container"> 
+                <h2 class="car_subtitle">Producto</h2>
+                <h2 class="car_subtitle">Cantidad</h2>
+                <h2 class="car_subtitle"></h2>
+            </li> 
+            <li class="car_product"> 
+                <p class="product_name">ATÚN</p>
+                <p class="product_amount">3</p>
+                <button><img src="./Imagenes/papelera.png" alt="imagen papelera"></button>
+            </li> 
+            <li class="car_product"> 
+                <p class="product_name">AZUCAR BLANCA</p>
+                <p class="product_amount">5</p>
+                <button><img src="./Imagenes/papelera.png" alt="imagen papelera"></button>
+            </li> 
+            <li class="car_product"> 
+                <p class="product_name">AZUCAR MORENA</p>
+                <p class="product_amount">5</p>
+                <button><img src="./Imagenes/papelera.png" alt="imagen papelera"></button>
+            </li> 
+            <li class="car_product"> 
+                <p class="product_name">CHAMPIÑONES</p>
+                <p class="product_amount">4</p>
+                <button><img src="./Imagenes/papelera.png" alt="imagen papelera"></button>
+            </li> 
+        </ul>
+        <div class="car_total" id="total">
+            Total Productos: <span id="total-amount">4</span>
+        </div>
+        <div class="btn-container">
+            <button type="button">Editar Pedido</button>
+            <button type="submit">Confirmar Pedido</button>
+        </div>
+
+    </form>
+    <script src="products.js"></script>    
+</body>
+</html>
