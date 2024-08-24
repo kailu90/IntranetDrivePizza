@@ -350,3 +350,40 @@ main {
 .car_container button:hover {
     filter: brightness(0.7);
 }
+
+
+
+
+
+/*********************CONFIRMACIÓN ENVIO PEDIDO*********************************/
+
+.envio_ok_main {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+}
+
+
+.confirmation_container {
+    background-color: black;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px;
+    margin: 0 auto;
+    gap: 30px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.confirmation_container img:nth-child(1) {
+    width: 200px;
+}
+
+.confirmation_container img:nth-child(2) {
+    width: 50px;
+
+}
