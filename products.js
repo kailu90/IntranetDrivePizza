@@ -14,7 +14,7 @@ const productForm = document.getElementById('form');
 
 productForm.addEventListener('submit', function (event) {
  event.preventDefault();
-
+ 
  const form = event.target;
  const order = createOrder(form);
  postData(order);
@@ -59,3 +59,8 @@ async function postData(orderData) {
   console.error(error);
  } 
 }
+
+document.getElementById('btn_orders').addEventListener('click', function() {
+  window.location.href = 'car.html';
+  console.log("botón enviar orden")
+});
