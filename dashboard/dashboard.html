@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Inventario - Pizzería</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <header class="header">
+    <h1 class="header__title">Panel de Administración</h1>
+    <nav class="header__menu">
+        <ul class="header__list">
+            <li class="header__item"><a class="header__link" href="#">Perfil</a></li>
+            <li class="header__item"><a class="header__link" href="#">Cerrar Sesión</a></li>
+        </ul>
+    </nav>
+</header>
+
+<aside class="sidebar">
+    <nav class="sidebar__nav">
+        <ul class="sidebar__list">
+            <li class="sidebar__item"><a class="sidebar__link" href="#">Dashboard</a></li>
+            <li class="sidebar__item"><a class="sidebar__link" href="#">Pedidos</a></li>
+            <li class="sidebar__item"><a class="sidebar__link" href="./products.html">Productos</a></li>
+            <li class="sidebar__item"><a class="sidebar__link" href="#">Usuarios</a></li>
+            <li class="sidebar__item"><a class="sidebar__link" href="#">Reportes</a></li>
+        </ul>
+    </nav>
+</aside>
+
+<main class="content">
+    <section class="content__dashboard-overview dashboard-overview">
+        <h2 class="dashboard-overview__title">Resumen del Inventario</h2>
+        <div class="dashboard-overview__cards cards">
+            <div class="cards__card card">
+                <h3 class="card__title">Total de Pedidos</h3>
+                <p class="card__info">120</p>
+            </div>
+            <div class="cards__card card">
+                <h3 class="card__title">Pedidos recibidos</h3>
+                <p class="card__info">80</p>
+            </div>
+            <div class="cards__card card">
+                <h3 class="card__title">Pedidos completados</h3>
+                <p class="card__info">10</p>
+            </div>
+            <div class="cards__card card">
+                <h3 class="card__title">Pedidos Pendientes</h3>
+                <p class="card__info">5</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content__inventory-management inventory-management">
+        <h2 class="inventory-management__title">Gestión de Pedidos</h2>
+        <table class="inventory-management__table">
+            <thead class="inventory-management__thead">
+                <tr class="inventory-management__row">
+                    <th class="inventory-management__heading">Pedido</th>
+                    <th class="inventory-management__heading">Entregar</th>
+                    <th class="inventory-management__heading">Estado</th>
+                    <th class="inventory-management__heading">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="inventory-management__tbody" id="ordersContainer">
+                <!-- <tr class="inventory-management__row">
+                    <td class="inventory-management__cell">Azúcar Blanca</td>
+                    <td class="inventory-management__cell">Pizzas</td>
+                    <td class="inventory-management__cell">20</td>
+                    <td class="inventory-management__cell">✅</td>
+                    <td class="inventory-management__cell">
+                        <a class="inventory-management__link" href="#">Editar</a> | 
+                        <a class="inventory-management__link" href="#">Eliminar</a>
+                    </td>
+                </tr>
+                <tr class="inventory-management__row">
+                    <td class="inventory-management__cell">champiñones</td>
+                    <td class="inventory-management__cell">Pizzas</td>
+                    <td class="inventory-management__cell">15</td>
+                    <td class="inventory-management__cell">❌</td>
+                    <td class="inventory-management__cell">
+                        <a class="inventory-management__link" href="#">Editar</a> | 
+                        <a class="inventory-management__link" href="#">Eliminar</a>
+                    </td>
+                </tr> -->
+            </tbody>
+        </table>
+    </section>
+</main>
+
+<footer class="footer">
+    <p class="footer__text">&copy; 2024 Pizzería. Todos los derechos reservados.</p>
+</footer>
+<script src="index.js"></script>
+</body>
+</html>
