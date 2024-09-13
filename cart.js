@@ -70,8 +70,8 @@ document.getElementById('btn_edit').addEventListener('click', function(event) {
 
 document.getElementById('btn_confirm').addEventListener('click', async function(event) {
   event.preventDefault();
-
   try {
+    event.target.disabled = true;
     const order = JSON.parse(localStorage.getItem('order'));
     if (!order) {
       throw new Error("No se encontró el pedido en el localStorage");
