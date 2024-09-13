@@ -16,10 +16,10 @@
     las labores del día a día</p>
     <form class="form_products" action="" method="POST" id="form">
         <ul class="list_products">
-            <li class="list_location" required>
+            <li class="list_location">
                 <label>SEDE</label>
-                <select name="SEDE" id="location">
-                    <option value="0">Seleccionar</option>
+                <select name="SEDE" id="location" required>
+                    <option value="" disabled selected>Seleccionar</option>
                     <option value="ACROPOLIS">ACROPOLIS</option>
                     <option value="CABECERA">CABECERA</option>
                     <option value="CAÑAVERAL">CAÑAVERAL</option>
@@ -27,18 +27,9 @@
                     <option value="PIEDECUESTA">PIEDECUESTA</option>
                 </select>
             </li>
-            <li class="day_dalivery">
-                <label>DIA DE ENTREGA</label>
-                <select name="Para que día es el pedido?" id="day_dalivery" required>
-                    <option value="0">Seleccionar</option>
-                    <option value="LUNES">LUNES</option>
-                    <option value="MARTES">MARTES</option>
-                    <option value="MIERCOLES">MIERCOLES</option>
-                    <option value="JUEVES">JUEVES</option>
-                    <option value="VIERNES">VIERNES</option>
-                    <option value="SABADO">SABADO</option>
-                    <option value="DOMINGO">DOMINGO</option>
-                </select>
+            <li class="day_delivery">
+                <label for="day_delivery">FECHA</label>
+                <input type="date" name="day_delivery" id="day_delivery" required>
             </li>
         <li class="product">
             <label>ATÚN</label>
@@ -489,6 +480,16 @@
                 <option value="1000">1000</option>
                 <option value="1500">1500</option>
                 <option value="2000">2000</option>
+            </select>
+        </li>
+        <li class="product">
+            <label>CAJA HAMBURGUESAS</label>  
+            <select name="CAJA HAMBURGUESAS" id="caja_hamburguesas">
+                <option value="0">0</option>
+                <option value="300">300</option>
+                <option value="600">600</option>
+                <option value="900">900</option>
+                <option value="1200">1200</option>
             </select>
         </li>
         <li class="product observation">  

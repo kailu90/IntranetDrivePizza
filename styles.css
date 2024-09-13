@@ -151,7 +151,7 @@ main {
     margin: 0 auto;
 }
 
-.product , .list_location , .day_dalivery {
+.product , .list_location , .day_delivery {
     display: flex;
     justify-content: space-around;
     width: 340px;
@@ -163,7 +163,7 @@ main {
     margin: 0 auto 30px auto;
 }
 
-.list_location label, .list_location select {
+.list_location label, .list_location select , .day_delivery label , .day_delivery input{
     width: 50%;
     display: flex;  
     justify-content: center;
@@ -182,10 +182,10 @@ main {
 }
 
 .product label {
-    width: 50%;
+    width: 60%;
 }
 
-.product select , .day_dalivery select , .list_location select  {
+.product select , .day_delivery input, .list_location select  {
     text-align: center;
     font-weight: bold;
 }
@@ -302,6 +302,8 @@ main {
 .car_product_list {
     color: black;
     width: 100%;
+    margin: 0 auto;
+    max-width: 800px;
 }
 
 .car_product {
@@ -335,6 +337,9 @@ main {
 
 .btn-container {
     display: flex;
+    max-width: 800px;
+    margin: 0 auto;
+    gap: 100px;
 }
 
 .btn-container button:nth-child(1) {
@@ -351,6 +356,53 @@ main {
     filter: brightness(0.7);
 }
 
+@media (max-width: 900px) {
+    .car_container {
+        font-size: 10px;
+    }
+
+    .car_product {
+        height: 20px;
+        padding: 0px;
+    }
+}
+
+@media (max-width: 800px) {
+    .car_header {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .car_header h1 {
+        font-size: 30px;
+    }
+
+    .car_header img {
+        width: 150px;
+    }
+    
+    .car_container {
+        padding: 0px;
+    }
+
+    .btn-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .car_container button {
+        height: 20px;
+    }
+
+    .car_product {
+        padding: 0px;
+    }
+
+    .car_product img {
+        width: 10px;
+    }    
+}
 
 
 
