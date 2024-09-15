@@ -25,17 +25,22 @@ async function getOrders(url) {
 getOrders('https://api-pizzeria.vercel.app/api/v1/orders')
   .then(data => {
     orders = Object.entries(data);
+    console.log(orders);
     orders.forEach(order => {
-      const tr = document.createElement('tr');
+      const row = document.createElement('tr');
 
+      const orderNumber = document.createElement('td');
+      orderNumber.textContent = 'undefined';
+      
+      const deliveryDate = document.createElement('td');
+      deliveryDate.textContent = order[1]['FECHA ENTREGA'];
+      
       const sede = document.createElement('td');
       sede.textContent = order[1].SEDE;
 
-      const deliveryDate = document.createElement('td');
-      deliveryDate.textContent = order[1]['Para que día es el pedido?'];
-
-      const sent = document.createElement('td');
-      sent.textContent = "Esperando";
+      const state = document.createElement('td');
+      state.textContent = "Pendiente";
+      
 
       const anchorsContainer = document.createElement('td');
 
@@ -43,12 +48,19 @@ getOrders('https://api-pizzeria.vercel.app/api/v1/orders')
       print.textContent = "Ver";
 
       const archive = document.createElement('a');
-      archive.textContent = "Archivar";
+      archive.textContent = " Imprimir";
 
       anchorsContainer.append(print, "|", archive);
 
-      tr.append(sede, deliveryDate, sent, anchorsContainer);
-      ordersList.append(tr);
+      const orderValue = document.createElement('td');
+      orderValue.textContent = 'undefined';
+
+      const totalOrderValue = document.createElement('td');
+      totalOrderValue.textContent = 'undefined';
+
+      row.append(orderNumber, deliveryDate, sede, state, anchorsContainer, orderValue, totalOrderValue);
+
+      ordersList.append(row);
     })
   })
   .catch(error => console.error('Error:', error));
