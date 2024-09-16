@@ -46,6 +46,9 @@ function cart(order, apiData) {
         const formattedPrice = new Intl.NumberFormat('es-CO', {
           style: 'currency',
           currency: 'COP',
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 2 
+
         }).format(priceTimesQuantity);
         totalPrice += priceTimesQuantity;
         quantityPrice = document.createElement('p');
@@ -65,11 +68,15 @@ function cart(order, apiData) {
   let finalPrice = ((15 * totalPrice) / 100) + totalPrice;
   totalPriceParagraph.textContent = new Intl.NumberFormat('es-CO', {
     style: 'currency',
-    currency: 'COP'
+    currency: 'COP',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2 
   }).format(totalPrice);
   finalPriceParagraph.textContent = new Intl.NumberFormat('es-CO', {
     style: 'currency',
     currency: 'COP',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2 
   }).format(finalPrice);
   productsCount.textContent = products;
   
