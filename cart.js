@@ -8,7 +8,7 @@ let localStorageData;
 if (localStorage.getItem('order')) {
   localStorageData = localStorage.getItem('order');
   const order = Object.entries(JSON.parse(localStorageData));
-  getProducts('https://api-pizzeria.vercel.app/api/v1/products');
+
   const storageApiData = localStorage.getItem('productsInfo');
   const productsInfo = Object.entries(JSON.parse(storageApiData));
   const dataCorrected = productsInfo.map(product => {
@@ -16,7 +16,9 @@ if (localStorage.getItem('order')) {
     return corrected;
   })
 
-  cart(order, dataCorrected);
+  if (dataCorrected) {
+    cart(order, dataCorrected);
+  }
 }
 
 function cart(order, apiData) {
@@ -124,25 +126,3 @@ document.getElementById('btn_confirm').addEventListener('click', async function(
     console.error("Error al procesar el pedido: ",error);
   }
 });
-
-async function getProducts(url) {
-  try {
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    if (Object.keys(data).length !== 0) {
-      localStorage.setItem('productsInfo', JSON.stringify(data));
-    }
-  } catch (error) {
-    console.error('Error al encontrar la información de los productos:', error);
-  }
-}
