@@ -247,7 +247,7 @@ main {
 
 
 
-/*********************CARRITO DE COMPRAS*******************/
+/*********************DETALLES DE PEDIDO*******************/
 
 .car_header{
     display: flex;
@@ -275,40 +275,87 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: left;
-    padding: 50px 100px;
+    padding: 20px 100px;
 }
 
-.car_total {
+.car_data_branch , .car_data_date {
     display: flex;
-    font-weight: bold;
-    width: 80%;
+    justify-content: space-between;
+    max-width: 400px;
+    margin: 0 auto;    
+}
+
+.car_data_branch p , .car_data_date p {
+    display: flex;
     justify-content: center;
-    gap: 50px;
+    min-width: 200px;
     margin: 5px auto;
 }
+
+.car_data_branch p:nth-child(1) , .car_data_date p:nth-child(1) {
+    font-weight: bold;
+}
+
+
 
 .car_container button {
     display: flex;
     align-items: center;
     justify-content: center;  
-    width: 200px;
-    height: 30px;
+    width: 50%;
+    max-width: 400px;
     margin: 10px auto;
     background-color: green;
     border-radius: 5px;
     cursor: pointer;
 }
 
+table {
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.table_head th {
+    width: max-content;
+    padding: 10px;
+    border-bottom: 1px solid black;
+}
+
+.table_body td {
+   padding: 5px;
+   width: max-content;
+   border-bottom: 1px solid black;
+}
+
+.car_data_observation {
+    text-align: center; 
+    padding: 20px; 
+    border: 1px solid black; 
+    margin: 20px 0;
+    max-width: 400px; 
+    margin-left: auto; 
+    margin-right: auto; 
+    border-radius: 8px; 
+}
+
+.car_data_observation p:nth-child(1) {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
 .car_product_list {
     color: black;
     width: 100%;
-    margin: 0 auto;
-    max-width: 800px;
+    margin: 20px auto;
+    max-width: 400px;
 }
 
 .car_product_list li:nth-child(1) , .car_product_list li:nth-child(2)  {
     font-weight: bold;
 }
+
 
 .car_product {
     display: flex;
@@ -354,11 +401,25 @@ main {
     cursor: pointer;
 }
 
+.car_total {
+    display: flex;
+    font-weight: bold;
+    width: 80%;
+    justify-content: center;
+    gap: 50px;
+    margin: 5px auto;
+}
+
 .btn-container {
     display: flex;
-    max-width: 800px;
+    max-width: 400px;
     margin: 0 auto;
-    gap: 100px;
+    gap: 30px;
+}
+
+.btn-container button {
+    padding: 5px;
+
 }
 
 .btn-container button:nth-child(1) {
@@ -374,6 +435,9 @@ main {
 .car_container button:hover {
     filter: brightness(0.7);
 }
+
+
+
 
 @media (max-width: 900px) {
     .car_container {
