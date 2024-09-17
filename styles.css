@@ -338,6 +338,7 @@ li {
     padding: 20px; 
     border: 1px solid black; 
     margin: 20px 0;
+    width: 80%;
     max-width: 400px; 
     margin-left: auto; 
     margin-right: auto; 
