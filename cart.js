@@ -2,6 +2,11 @@ const productsList = document.getElementById('list');
 const productsCount = document.getElementById('total-amount');
 const totalPriceParagraph = document.getElementById('valor-neto-amount');
 const finalPriceParagraph = document.getElementById('valor-servicio-amount');
+const sedeParagraph = document.getElementById('sede-name');
+const deliberyDateParagraph = document.getElementById('delibery-date');
+const commentParagraph = document.getElementById('comment');
+const listContainer = document.getElementById('table-body');
+
 let products = 0;
 let localStorageData;
 
@@ -23,47 +28,51 @@ if (localStorage.getItem('order')) {
 
 function cart(order, apiData) {
   let totalPrice = 0;
-  
+
   order.forEach(keyValue => {
-    const item = document.createElement('li');
-    item.classList = "car_product car_subtitle_container";
-    
-    const itemName = document.createElement('p');
-    itemName.classList = "car_subtitle";
-    itemName.textContent = keyValue[0];
-    
-    const count = document.createElement('p');
-    count.classList = "product_amount";
-    count.textContent = keyValue[1];
-    
-    let quantityPrice;
-    
-    apiData.forEach(product => {
-      if (product[1].name === keyValue[0] && keyValue[0] !== "SEDE" && keyValue[0] !== "OBSERVACIONES" && keyValue[0] !== "FECHA ENTREGA") {
-
-        const productPrice = parseFloat(product[1].price.split('$').join('').split('.').join('').trim());
-        
-        const priceTimesQuantity = productPrice * parseInt(keyValue[1]);
-        
-        const formattedPrice = new Intl.NumberFormat('es-CO', {
-          style: 'currency',
-          currency: 'COP',
-          minimumFractionDigits: 0,
-          maximumFractionDigits: 2 
-
-        }).format(priceTimesQuantity);
-        totalPrice += priceTimesQuantity;
-        quantityPrice = document.createElement('p');
-         quantityPrice.textContent = formattedPrice;
-        return;
+    if (keyValue[0] === "SEDE") {
+      sedeParagraph.textContent = keyValue[1];
+    } else if (keyValue[0] === "FECHA ENTREGA") {
+      deliberyDateParagraph.textContent = keyValue[1];      
+    } else if (keyValue[0] === "OBSERVACIONES") {
+      commentParagraph.textContent = keyValue[1];
+    } else {
+      const item = document.createElement('tr');
+      
+      const itemName = document.createElement('td');
+      itemName.textContent = keyValue[0];
+      
+      const count = document.createElement('td');
+      count.textContent = keyValue[1];
+      
+      let quantityPrice;
+      
+      apiData.forEach(product => {
+        if (product[1].name === keyValue[0]) {
+  
+          const productPrice = parseFloat(product[1].price.split('$').join('').split('.').join('').trim());
+          
+          const priceTimesQuantity = productPrice * parseInt(keyValue[1]);
+          
+          const formattedPrice = new Intl.NumberFormat('es-CO', {
+            style: 'currency',
+            currency: 'COP',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 2 
+  
+          }).format(priceTimesQuantity);
+          totalPrice += priceTimesQuantity;
+          quantityPrice = document.createElement('td');
+           quantityPrice.textContent = formattedPrice;
+          return;
+        }
+      })
+  
+      item.append(itemName, count, quantityPrice);
+      listContainer.append(item);
+      if (keyValue[0] !== "SEDE" && keyValue[0] !== "OBSERVACIONES" && keyValue[0] !== "FECHA ENTREGA") {
+        products++;
       }
-    })
-
-    item.append(itemName, count, quantityPrice);
-    productsList.append(item);
-    
-    if (keyValue[0] !== "SEDE" && keyValue[0] !== "OBSERVACIONES" && keyValue[0] !== "FECHA ENTREGA") {
-      products++;
     }
   });
 
@@ -80,6 +89,7 @@ function cart(order, apiData) {
     minimumFractionDigits: 0,
     maximumFractionDigits: 2 
   }).format(finalPrice);
+
   productsCount.textContent = products;
   
 }
