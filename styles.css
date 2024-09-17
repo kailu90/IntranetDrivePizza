@@ -251,17 +251,20 @@ main {
 
 .car_header{
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
     width: 80%;
+    max-width: 400px;
     margin: 0 auto;
     padding: 20px 20px;
-    border-bottom: 2px solid gray ;
+    border-bottom: 2px solid gray ;    
 }
 
 .car_header h1 {
     display: flex;
     align-items:end;
-    font-size: 50px;
+    font-size: 30px;
+    margin-top: 20px;
 }
 
 .car_header img {
@@ -272,10 +275,13 @@ main {
 
 .car_container {
     width: 100%;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: left;
-    padding: 20px 100px;
+    padding: 20px 0;
+    margin: 0 auto;
+    font-size: 10px;
 }
 
 .car_data_branch , .car_data_date {
@@ -288,7 +294,6 @@ main {
 .car_data_branch p , .car_data_date p {
     display: flex;
     justify-content: center;
-    min-width: 200px;
     margin: 5px auto;
 }
 
@@ -296,13 +301,10 @@ main {
     font-weight: bold;
 }
 
-
-
 .car_container button {
     display: flex;
     align-items: center;
     justify-content: center;  
-    width: 50%;
     max-width: 400px;
     margin: 10px auto;
     background-color: green;
@@ -355,7 +357,6 @@ table {
 .car_product_list li:nth-child(1) , .car_product_list li:nth-child(2)  {
     font-weight: bold;
 }
-
 
 .car_product {
     display: flex;
@@ -476,7 +477,7 @@ table {
     }
 
     .car_container button {
-        height: 20px;
+        height: 30px;
     }
 
     .car_product {
