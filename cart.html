@@ -16,14 +16,14 @@
         <div class="car_data_container">        
             <div class="car_data_branch">
                 <p>SEDE</p>
-                <p>ACROPOLIS</p>
+                <p id="sede-name"></p>
             </div>  
             <div class="car_data_date">
                 <p>FECHA</p>
-                <p>2024-09-16</p>
+                <p id="delibery-date"></p>
             </div>  
         </div>
-        <table class="car_product_list" id="list">
+        <table class="car_product_list">
                 <thead class="table_head">
                     <tr>
                         <th>PRODUCTO</th>
@@ -31,73 +31,13 @@
                         <th>VALOR</th>
                     </tr>
                 </thead>
-                <tbody class="table_body">
-                    <tr>
-                        <td>ATÚN</td>
-                        <td>3</td>
-                        <td>$16.500</td>
-                    </tr>
-                    <tr>
-                        <td>AZUCAR BLANCA</td>
-                        <td>5</td>
-                        <td>$10.000</td>
-                    </tr>
-                    <tr>
-                        <td>AZUCAR MORENA</td>
-                        <td>2</td>
-                        <td>$5.000</td>
-                    </tr>
-                    <tr>
-                        <td>CHORIZO</td>
-                        <td>3</td>
-                        <td>$16.500</td>
-                    </tr>
-                    <tr>
-                        <td>FETUCCINI</td>
-                        <td>3</td>
-                        <td>$16.500</td>
-                    </tr>
-                    <tr></tr>
-                        <td>MASA X 140 gr</td>
-                        <td>3</td>
-                        <td>$16.500</td>
-                    </tr>
-                    <tr>
-                        <td>MASA X 250 gr</td>
-                        <td>5</td>
-                        <td>$10.000</td>
-                    </tr>
-                    <tr>
-                        <td>MASA X 350 gr</td>
-                        <td>2</td>
-                        <td>$5.000</td>
-                    </tr>
-                    <tr>
-                        <td>MASA X 450 gr</td>
-                        <td>3</td>
-                        <td>$16.500</td>
-                    </tr>
-                    <tr>
-                        <td>MASA X 700 gr</td>
-                        <td>3</td>
-                        <td>$16.500</td>
-                    </tr>
-                    <tr>
-                        <td>NAPOLITANA</td>
-                        <td>3</td>
-                        <td>$16.500</td>
-                    </tr>
-                    <tr>
-                        <td>OREGANO</td>
-                        <td>5</td>
-                        <td>$10.000</td>
-                    </tr>
+                <tbody class="table_body" id="table-body">
+                    
                 </tbody>
         </table>
         <div class="car_data_observation">
             <p>OBSERVACIÓN:</p>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste similique et quidem hic ea possimus, sed sint odio nemo explicabo officia vel ipsa praesentium doloribus maiores ratione minima nam. Voluptates, ipsam sed et rerum magni sequi mollitia earum? Animi eveniet veritatis sint deleniti provident laborum molestias recusandae, nihil corrupti impedit.
-            </p>          
+            <p id="comment"></p>          
         </div>  
         <div class="car_total" id="total">
             Total Productos: <span id="total-amount">0</span>
