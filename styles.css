@@ -92,6 +92,15 @@ li {
     background-size: cover;
 }
 
+#login_error {
+    font-size: 14px;
+    display: none;
+    color: red;
+    text-align: center;
+    justify-content: center;  
+    margin: 10px auto;
+}
+
 @media (max-width: 400px) {
     .login_image {
         display: none;
@@ -468,4 +477,9 @@ li {
 
 .confirmation_container img:nth-child(2) {
     width: 50px;
+}
+
+.confirmation_container {
+    color: white ;
+
 }
