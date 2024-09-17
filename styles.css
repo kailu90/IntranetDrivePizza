@@ -62,7 +62,6 @@ li {
     flex-direction: column;
 }
 
-
 .login_form label {
     display: flex;
     width: 100%;
@@ -109,6 +108,7 @@ li {
 
 
 /*********************ORDENES********************/
+
 .logo_orders {
     display: flex;
     width: auto;
@@ -119,7 +119,7 @@ li {
     padding: 20px;
 }
 
-main {
+.orders_main {
     color: white;
     display: flex;
     flex-direction: column;
@@ -312,13 +312,6 @@ main {
     cursor: pointer;
 }
 
-table {
-    text-align: center;
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed;
-}
-
 .table_head th {
     width: max-content;
     padding: 10px;
@@ -352,54 +345,13 @@ table {
     width: 80%;
     margin: 20px auto;
     max-width: 400px;
+    text-align: center;
+    border-collapse: collapse;
+    table-layout: fixed;
 }
 
 .car_product_list li:nth-child(1) , .car_product_list li:nth-child(2)  {
     font-weight: bold;
-}
-
-.car_product {
-    display: flex;
-    justify-content: space-between;
-    width: 70%;  
-    border-bottom: 1px solid gray ;     
-    padding: 5px;
-    margin: 0 auto;
-}
-
-.car_product p , .car_product button, .car_product h2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30%;
-    text-align: center;
-}
-
-.car_product {
-    height: max-content;
-    display: flex;
-    align-items: center;
-}
-
-.car_product p {
-    height: max-content;
-    padding: 5px;
-}
-
-.observation {
-    height: max-content;
-}
-
-.car_product button {
-    background: none;
-    border: none;
-    margin: 0;   
-    cursor: pointer;
-}
-
-.car_product img {
-    width: 20px;
-    cursor: pointer;
 }
 
 .car_total {
@@ -420,7 +372,6 @@ table {
 
 .btn-container button {
     padding: 5px;
-
 }
 
 .btn-container button:nth-child(1) {
@@ -436,9 +387,6 @@ table {
 .car_container button:hover {
     filter: brightness(0.7);
 }
-
-
-
 
 @media (max-width: 900px) {
     .car_container {
@@ -478,19 +426,15 @@ table {
 
     .car_container button {
         height: 30px;
-    }
-
-    .car_product {
-        padding: 0px;    
-        height: max-content;
-        display: flex;
-        align-items: center;
-    }
-
-    .car_product img {
-        width: 10px;
-    }    
+    }     
 }
+
+
+
+
+
+
+
 
 
 
@@ -502,7 +446,6 @@ table {
     height: 100vh;
     background-color: black;
 }
-
 
 .confirmation_container {
     background-color: black;
@@ -525,5 +468,4 @@ table {
 
 .confirmation_container img:nth-child(2) {
     width: 50px;
-
 }
