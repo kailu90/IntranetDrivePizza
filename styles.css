@@ -30,6 +30,9 @@ li {
     #btn_edit , #btn_confirm , #btn_print ,header {
         display: none; /* Oculta elementos no deseados en la impresión */
     }
+    #valor-servicio {
+        margin-bottom: 50px;
+    }
 }
 
 
@@ -357,6 +360,10 @@ li {
    padding: 5px;
    width: max-content;
    border-bottom: 1px solid black;
+}
+
+.table_body tr td:nth-child(2){
+    font-weight: bold;
 }
 
 .car_data_observation {
