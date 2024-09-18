@@ -1,0 +1,52 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+ 
+body {
+    background-color: #f4f4f4;
+    background-image: url('./Imagenes/logo_drive.png');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+}
+
+.main_home { 
+    display: flex;
+    background-color: transparent;
+    width: max-content;
+    height: 100vh;
+    margin: auto;
+    align-items: center;
+}
+
+.cards_container {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    max-width: 600px;
+}
+
+.card {
+    width: 200px;
+    height: 100px;
+    border: 1px solid black;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #f4f4f4;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+    cursor: pointer;
+}
+
+.card:hover {
+    background-color: black; /* Cambia el color de fondo en hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade un efecto de sombra */
+    color: white;
+}

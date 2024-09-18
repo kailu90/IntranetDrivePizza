@@ -31,8 +31,8 @@ function validateLogin(event) {
 
     // Verificar si el usuario existe y la contraseña es correcta
     if (users[username] && users[username] === password) {
-        // Redirigir a la página de productos si la validación es correcta
-        window.location.href = "products.html";
+        // Redirigir a la página de home si la validación es correcta
+        window.location.href = "home.html";
     } else {
         // Mostrar error si el usuario o la contraseña son incorrectos
         errorMessage.textContent = "Usuario o contraseña incorrectos.";
