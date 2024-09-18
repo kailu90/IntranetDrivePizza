@@ -16,6 +16,28 @@ li {
 
 
 
+/********************ESTILOS PARA IMPRIMIR********************/
+
+
+@media print {
+    body {
+        width: 80mm; /* Ancho del papel */
+        font-family: Arial, sans-serif;
+        font-size: 12px; 
+        margin: 0;
+        padding: 0;
+    }
+    #btn_edit , #btn_confirm , #btn_print ,header {
+        display: none; /* Oculta elementos no deseados en la impresión */
+    }
+}
+
+
+
+
+
+
+
 
 
 
@@ -321,6 +343,10 @@ li {
     cursor: pointer;
 }
 
+.car_container button:nth-child(3) {
+    background-color: grey;
+}
+
 .table_head th {
     width: max-content;
     padding: 10px;
@@ -484,3 +510,6 @@ li {
     color: white ;
 
 }
+
+
+

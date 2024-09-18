@@ -9,3 +9,4 @@
   window.location.href = 'envioOK.html';
   console.log("botón confirmar pedido")
   });
+
