@@ -315,7 +315,7 @@ li {
     justify-content: left;
     padding: 20px 0;
     margin: 0 auto;
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .car_data_branch , .car_data_date {
@@ -385,7 +385,7 @@ li {
 
 .car_product_list {
     color: black;
-    width: 80%;
+    width: 90%;
     margin: 20px auto;
     max-width: 400px;
     text-align: center;
@@ -433,7 +433,7 @@ li {
 
 @media (max-width: 900px) {
     .car_container {
-        font-size: 10px;
+        font-size: 12px;
     }
 
     .car_product {
