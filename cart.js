@@ -9,6 +9,7 @@ const listContainer = document.getElementById('table-body');
 
 let products = 0;
 let localStorageData;
+let orderWithPrices;
 
 if (localStorage.getItem('order')) {
   localStorageData = localStorage.getItem('order');
@@ -29,7 +30,7 @@ if (localStorage.getItem('order')) {
 function cart(order, apiData) {
   let totalPrice = 0;
 
-  order.forEach(keyValue => {
+  order.forEach((keyValue, current) => {
     if (keyValue[0] === "SEDE") {
       sedeParagraph.textContent = keyValue[1];
     } else if (keyValue[0] === "FECHA ENTREGA") {
@@ -64,39 +65,58 @@ function cart(order, apiData) {
           totalPrice += priceTimesQuantity;
           quantityPrice = document.createElement('td');
            quantityPrice.textContent = formattedPrice;
-          return;
+           order[current].push(formattedPrice);
+           return;
+          }
+        })
+        
+        item.append(itemName, count, quantityPrice);
+        listContainer.append(item);
+        if (keyValue[0] !== "SEDE" && keyValue[0] !== "OBSERVACIONES" && keyValue[0] !== "FECHA ENTREGA") {
+          products++;
         }
-      })
-  
-      item.append(itemName, count, quantityPrice);
-      listContainer.append(item);
-      if (keyValue[0] !== "SEDE" && keyValue[0] !== "OBSERVACIONES" && keyValue[0] !== "FECHA ENTREGA") {
-        products++;
       }
-    }
-  });
+      });
+      
+      let finalPrice = ((15 * totalPrice) / 100) + totalPrice;
+      totalPriceParagraph.textContent = new Intl.NumberFormat('es-CO', {
+        style: 'currency',
+        currency: 'COP',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2 
+      }).format(totalPrice);
+      finalPriceParagraph.textContent = new Intl.NumberFormat('es-CO', {
+        style: 'currency',
+        currency: 'COP',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2 
+      }).format(finalPrice);
+      
+      productsCount.textContent = products;
+      
+      orderWithPrices = {
+        products: []
+      }
 
-  let finalPrice = ((15 * totalPrice) / 100) + totalPrice;
-  totalPriceParagraph.textContent = new Intl.NumberFormat('es-CO', {
-    style: 'currency',
-    currency: 'COP',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 2 
-  }).format(totalPrice);
-  finalPriceParagraph.textContent = new Intl.NumberFormat('es-CO', {
-    style: 'currency',
-    currency: 'COP',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 2 
-  }).format(finalPrice);
-
-  productsCount.textContent = products;
-  
+      order.forEach(item => {
+        if (item[0] === "SEDE") {
+          orderWithPrices.SEDE = item[1];
+        } else if (item[0] === "FECHA ENTREGA") {
+          orderWithPrices['FECHA ENTREGA'] = item[1];
+        } else if (item[0] === "OBSERVACIONES") {
+          orderWithPrices['OBSERVACIONES'] = item[1];
+        } else {
+          orderWithPrices.products.push({name: item[0], quantity: item[1], totalPrice: item[2]});
+        }
+      });
+      
+      orderWithPrices.orderPrice = totalPrice;
+      orderWithPrices.finalPrice = finalPrice;
 }
 
 async function postData(orderData) {
   try {
-    const response = await fetch("https://api-pizzeria.vercel.app/api/v1/orders", {
+    const response = await fetch("http://localhost:3000/api/v1/orders", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -125,11 +145,11 @@ document.getElementById('btn_confirm').addEventListener('click', async function(
   event.preventDefault();
   try {
     event.target.disabled = true;
-    const order = JSON.parse(localStorage.getItem('order'));
-    if (!order) {
+    if (!orderWithPrices) {
       throw new Error("No se encontró el pedido en el localStorage");
     }
-    await postData(order);
+    console.log(orderWithPrices);
+    await postData(orderWithPrices);
 
     window.location.href = 'envioOK.html';
   } catch (error) {
