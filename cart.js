@@ -116,7 +116,7 @@ function cart(order, apiData) {
 
 async function postData(orderData) {
   try {
-    const response = await fetch("http://localhost:3000/api/v1/orders", {
+    const response = await fetch("https://api-pizzeria.vercel.app/api/v1/orders", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
