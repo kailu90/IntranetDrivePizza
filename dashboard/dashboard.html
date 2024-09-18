@@ -8,6 +8,7 @@
 </head>
 <body>
   <header class="header">
+    <img src="../Imagenes/logo_drive_blanco.png" alt="logo drive">
     <h1 class="header__title">Panel de Administración</h1>
     <nav class="header__menu">
         <ul class="header__list">
@@ -24,7 +25,8 @@
             <li class="sidebar__item"><a class="sidebar__link" href="#">Pedidos</a></li>
             <li class="sidebar__item"><a class="sidebar__link" href="./products.html">Productos</a></li>
             <li class="sidebar__item"><a class="sidebar__link" href="#">Usuarios</a></li>
-            <li class="sidebar__item"><a class="sidebar__link" href="#">Reportes</a></li>
+            <li class="sidebar__item"><a class="sidebar__link" href="#">Liquidación</a></li>
+            <li class="sidebar__item"><a class="sidebar__link" href="#">Lista de Precios</a></li>
         </ul>
     </nav>
 </aside>
@@ -57,13 +59,13 @@
         <table class="inventory-management__table">
             <thead class="inventory-management__thead">
                 <tr class="inventory-management__row">
-                    <th class="inventory-management__heading">PEDIDO</th>
+                    <th class="inventory-management__heading">ID PEDIDO</th>
                     <th class="inventory-management__heading">FECHA ENTREGA</th>
                     <th class="inventory-management__heading">SEDE</th>
                     <th class="inventory-management__heading">ESTADO</th>
                     <th class="inventory-management__heading">ACCIONES</th>
-                    <th class="inventory-management__heading">VALOR PEDIDO</th>
-                    <th class="inventory-management__heading">VALOR PEDIDO C/15%</th>
+                    <th class="inventory-management__heading">VALOR NETO</th>
+                    <th class="inventory-management__heading">VALOR CON SERVICIO</th>
                 </tr>
             </thead>
             <tbody class="inventory-management__tbody" id="ordersContainer">
@@ -93,7 +95,7 @@
 </main>
 
 <footer class="footer">
-    <p class="footer__text">&copy; 2024 Pizzería. Todos los derechos reservados.</p>
+    <p class="footer__text">&copy; 2024 DrivePizza. Todos los derechos reservados.</p>
 </footer>
 <script src="index.js"></script>
 </body>
