@@ -50,3 +50,27 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade un efecto de sombra */
     color: white;
 }
+
+
+@media (max-width: 800px) {
+
+    .main_home {
+        flex-direction: column;
+        margin-top: 50px; /* Agrega espacio en la parte superior */
+        height: auto; /* Permite que el contenedor crezca hacia abajo */
+    }
+  
+    .cards_container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 400px;
+        margin: 0 auto;
+    }
+
+    .card {
+        width: 90%;
+    }
+
+
+}
