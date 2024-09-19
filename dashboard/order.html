@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="order.css">
     <link rel="shortcut icon" href="../Imagenes/logo_drive.png" type="image/x-icon">
     <title>Carrito de Compras</title>
 </head>
@@ -13,18 +13,32 @@
         <h1>PEDIDO SEDE</h1>
     </header>
     <form class="car_container">
-        <ul class="car_product_list" id="list">
-            <!-- <li class="car_product car_subtitle_container"> 
-                <h2 class="car_subtitle">Producto</h2>
-                <h2 class="car_subtitle">Cantidad</h2>
-                <h2 class="car_subtitle"></h2>
-            </li> 
-            <li class="car_product"> 
-                <p class="product_name">ATÚN</p>
-                <p class="product_amount">3</p>
-                <button><img src="./Imagenes/papelera.png" alt="imagen papelera"></button>
-            </li> -->
-        </ul>
+        <div class="car_data_container">        
+            <div class="car_data_branch">
+                <p>SEDE</p>
+                <p id="sede-name"></p>
+            </div>  
+            <div class="car_data_date">
+                <p>FECHA</p>
+                <p id="delibery-date"></p>
+            </div>  
+        </div>
+        <table class="car_product_list">
+                <thead class="table_head">
+                    <tr>
+                        <th>PRODUCTO</th>
+                        <th>CANTIDAD</th>
+                        <th>VALOR</th>
+                    </tr>
+                </thead>
+                <tbody class="table_body" id="table-body">
+                    
+                </tbody>
+        </table>
+        <div class="car_data_observation">
+            <p>OBSERVACIÓN:</p>
+            <p id="comment"></p>          
+        </div>  
         <div class="car_total" id="total">
             Total Productos: <span id="total-amount">0</span>
         </div>
@@ -35,11 +49,13 @@
             Valor con servicio: <span id="valor-servicio-amount">$0</span>
         </div>
         <div class="btn-container">
-            <button type="button" id="btn_edit">Regresar</button>
-            <button type="button" id="btn_confirm">Imprimir</button>
+            <button type="button" id="btn_edit">Regresar a editar Pedido</button>
+            <button type="button" id="btn_confirm">Confirmar Pedido</button>
+            <button type="button" id="btn_print">Imprimir</button>
         </div>
 
-    </form>
-    <script src="order.js"></script>    
+    </form> 
+    <script src="./order.js"></script>
+    <script src="../print.js"></script>   
 </body>
 </html>

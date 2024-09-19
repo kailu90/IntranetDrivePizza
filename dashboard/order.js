@@ -1,29 +1,40 @@
-const productsList = document.getElementById('list');
-console.log(productsList);
+const urlParams = new URLSearchParams(window.location.search);
+const info = urlParams.get("id");
 
+const orders = JSON.parse(localStorage.getItem("orders"));
 
-const recivedOrders = JSON.parse(localStorage.getItem('recivedOrders'));
-console.log(recivedOrders)
+const order = orders.filter((order) => order["ID PEDIDO"] === info);
 
-recivedOrders.forEach(order => {
-  const data = Object.entries(order)
-  console.log(data);
-  data.forEach(keyValue => {
-    console.log(keyValue);
-  //   const item = document.createElement('li');
-  // item.classList = "car_product car_subtitle_container";
-  
-  // const itemName = document.createElement('p');
-  // itemName.classList = "car_subtitle";
-  // itemName.textContent = keyValue[0];
-  
-  // const count = document.createElement('p');
-  // count.classList = "product_amount";
-  // count.textContent = keyValue[1];
+const sedeParagraph = document.getElementById("sede-name");
+const deliberyDateParagraph = document.getElementById("delibery-date");
+const container = document.getElementById("table-body");
+const commentParagraph = document.getElementById("comment");
+const netCostParagraph = document.getElementById("valor-neto-amount");
+const finalPriceParagraph = document.getElementById("valor-servicio-amount");
+const productsCount = document.getElementById("total-amount");
 
-  // item.append(itemName, count)
+sedeParagraph.textContent = order[0].SEDE;
+deliberyDateParagraph.textContent = order[0]["FECHA ENTREGA"];
 
-  // productsList.append(item) 
+order[0].products.forEach(product => {
+  const row = document.createElement('tr');
 
-  })
-})
+  const productName = document.createElement('td');
+  productName.textContent = product.name;
+
+  const productQuantity = document.createElement('td');
+  productQuantity.textContent = product.quantity;
+
+  const productTotalPrice = document.createElement('td');
+  productTotalPrice.textContent = product.totalPrice;
+
+  row.append(productName, productQuantity, productTotalPrice);
+
+  container.append(row);
+});
+
+commentParagraph.textContent = order[0]["OBSERVACIONES"];
+productsCount.textContent = order[0].products.length;
+
+netCostParagraph.textContent = order[0].netCost;
+finalPriceParagraph.textContent = order[0].costWithService;
