@@ -60,7 +60,8 @@ body {
 }
 
 .footer_home p {
-    width: 400px;
+    width: 90%;
+    max-width: 400px;
     text-align: center;
     margin: 20px auto;
 }
