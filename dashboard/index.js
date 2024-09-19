@@ -1,4 +1,8 @@
 const ordersList = document.getElementById('ordersContainer');
+const totalOrdersCounter = document.getElementById('total-orders');
+const incomingOrdersCounter = document.getElementById('incoming-orders');
+const deliveredOrdersCounter = document.getElementById('sent-orders');
+const undeliveredOrdersCounter = document.getElementById('undelivered-orders');
 
 let orders = [];
 
@@ -60,6 +64,15 @@ getOrders('https://api-pizzeria.vercel.app/api/v1/orders')
       row.append(orderNumber, deliveryDate, sede, state, anchorsContainer, orderValue, totalOrderValue);
 
       ordersList.append(row);
-    })
+    });
+
+    totalOrdersCounter.textContent = orders.length;
+    
+    const deliveredOrders = orders.filter(order => order[1].ESTADO === 'enviado');
+    deliveredOrdersCounter.textContent = deliveredOrders.length > 0 ? deliveredOrders.length : '0';
+    
+    const undeliveredOrders = orders.filter(order => order[1].ESTADO === 'pendiente');
+    undeliveredOrdersCounter.textContent = undeliveredOrders.length > 0 ? undeliveredOrders.length : '0';
+    
   })
   .catch(error => console.error('Error:', error));
