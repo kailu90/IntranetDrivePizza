@@ -31,6 +31,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  width: 100vw;
 }
 
 .header img {
@@ -136,12 +138,22 @@ body {
   color: #1abc9c;
 }
 
-.inventory-management h2 {
+
+
+
+
+
+
+
+/*******************DASHBOARD*********************/
+
+
+.inventory-management h2 , .price-list__title , .settlement__title{
   margin-bottom: 1rem;
   font-size: 1.5rem;
 }
 
-table {
+table , .price-list__table , .settlement__table {
   width: 100%;
   border-collapse: collapse;
   background-color: var(--color-light);
@@ -150,30 +162,30 @@ table {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-thead {
+thead , .price-list__thead , .settlement__thead  {
   background-color: var(--color-dark);
   color: var(--color-light);
 }
 
-thead th {
+thead th , .price-list__thead th , .settlement__thead th {
   padding: 1rem;
   text-align: left;
 }
 
-tbody tr {
+tbody tr , .price-list__tbody tr , .settlement__tbody tr {
   border-bottom: 1px solid #ccc;
 }
 
-tbody td {
+tbody td , .price-list__tbody td , .settlement__tbody td{
   padding: 1rem;
   text-align: left;
 }
 
-tbody tr:hover {
+tbody tr:hover , .price-list__tbody tr:hover , .settlement__tbody tr:hover{
   background-color: #f2f2f2;
 }
 
-tbody td a {
+tbody td a , .price-list__tbody td a , .settlement__tbody td a{
   color: #3498db;
   text-decoration: none;
   margin-right: 0.5rem;

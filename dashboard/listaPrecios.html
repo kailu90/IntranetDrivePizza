@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard de Inventario - DRIVE PIZZA</title>
+    <title>Lista Precios - DRIVE PIZZA</title>
     <link rel="stylesheet" href="dashboard.css">
     <link rel="shortcut icon" href="../Imagenes/logo_drive.png" type="image/x-icon">
 </head>
@@ -54,39 +54,36 @@
         </div>
     </section>
 
-    <section class="content__inventory-management inventory-management">
-        <h2 class="inventory-management__title">Gestión de Pedidos</h2>
-        <table class="inventory-management__table">
-            <thead class="inventory-management__thead">
-                <tr class="inventory-management__row">
-                    <th class="inventory-management__heading">ID PEDIDO</th>
-                    <th class="inventory-management__heading">FECHA ENTREGA</th>
-                    <th class="inventory-management__heading">SEDE</th>
-                    <th class="inventory-management__heading">ESTADO</th>
-                    <th class="inventory-management__heading">ACCIONES</th>
-                    <th class="inventory-management__heading">VALOR NETO</th>
-                    <th class="inventory-management__heading">VALOR CON SERVICIO</th>
+    <section class="content__price-list price-list">
+        <h2 class="price-list__title">Listado de Precios</h2>
+        <table class="price-list__table">
+            <thead class="price-list__thead">
+                <tr class="price-list__row">
+                    <th class="price-list__heading">PRODUCTO</th>
+                    <th class="price-list__heading">PRESENTACIÓN</th>
+                    <th class="price-list__heading">PRECIO</th>
                 </tr>
             </thead>
-            <tbody class="inventory-management__tbody" id="ordersContainer">
-                <!-- <tr class="inventory-management__row">
-                    <td class="inventory-management__cell">Azúcar Blanca</td>
-                    <td class="inventory-management__cell">Pizzas</td>
-                    <td class="inventory-management__cell">20</td>
-                    <td class="inventory-management__cell">✅</td>
-                    <td class="inventory-management__cell">
-                        <a class="inventory-management__link" href="#">Editar</a> | 
-                        <a class="inventory-management__link" href="#">Eliminar</a>
+            <tbody class="price-list__tbody" id="pricesContainer">
+                <!-- Ejemplo de fila -->
+                <!-- <tr class="price-list__row">
+                    <td class="price-list__cell">Azúcar Blanca</td>
+                    <td class="price-list__cell">Bolsa 1kg</td>
+                    <td class="price-list__cell">20</td>
+                    <td class="price-list__cell">✅</td>
+                    <td class="price-list__cell">
+                        <a class="price-list__link" href="#">Editar</a> | 
+                        <a class="price-list__link" href="#">Eliminar</a>
                     </td>
                 </tr>
-                <tr class="inventory-management__row">
-                    <td class="inventory-management__cell">champiñones</td>
-                    <td class="inventory-management__cell">Pizzas</td>
-                    <td class="inventory-management__cell">15</td>
-                    <td class="inventory-management__cell">❌</td>
-                    <td class="inventory-management__cell">
-                        <a class="inventory-management__link" href="#">Editar</a> | 
-                        <a class="inventory-management__link" href="#">Eliminar</a>
+                <tr class="price-list__row">
+                    <td class="price-list__cell">Champiñones</td>
+                    <td class="price-list__cell">Lata 500g</td>
+                    <td class="price-list__cell">15</td>
+                    <td class="price-list__cell">❌</td>
+                    <td class="price-list__cell">
+                        <a class="price-list__link" href="#">Editar</a> | 
+                        <a class="price-list__link" href="#">Eliminar</a>
                     </td>
                 </tr> -->
             </tbody>

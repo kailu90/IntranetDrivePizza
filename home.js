@@ -7,3 +7,8 @@ document.getElementById('card2').addEventListener('click', function(event) {
     event.preventDefault();
     window.location.href = 'dashboard/dashboard.html';
     });    
+
+document.getElementById('card3').addEventListener('click', function(event) {
+    event.preventDefault();
+    window.location.href = 'dashboard/listaPrecios.html';
+    });    

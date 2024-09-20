@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard de Inventario - DRIVE PIZZA</title>
+    <title>Liquidación - DRIVE PIZZA</title>
     <link rel="stylesheet" href="dashboard.css">
     <link rel="shortcut icon" href="../Imagenes/logo_drive.png" type="image/x-icon">
 </head>
@@ -54,44 +54,45 @@
         </div>
     </section>
 
-    <section class="content__inventory-management inventory-management">
-        <h2 class="inventory-management__title">Gestión de Pedidos</h2>
-        <table class="inventory-management__table">
-            <thead class="inventory-management__thead">
-                <tr class="inventory-management__row">
-                    <th class="inventory-management__heading">ID PEDIDO</th>
-                    <th class="inventory-management__heading">FECHA ENTREGA</th>
-                    <th class="inventory-management__heading">SEDE</th>
-                    <th class="inventory-management__heading">ESTADO</th>
-                    <th class="inventory-management__heading">ACCIONES</th>
-                    <th class="inventory-management__heading">VALOR NETO</th>
-                    <th class="inventory-management__heading">VALOR CON SERVICIO</th>
+    <section class="content__settlement settlement">
+        <h2 class="settlement__title">Liquidación</h2>
+        <table class="settlement__table">
+            <thead class="settlement__thead">
+                <tr class="settlement__row">
+                    <th class="settlement__heading">ID PEDIDO</th>
+                    <th class="settlement__heading">FECHA ENTREGA</th>
+                    <th class="settlement__heading">SEDE</th>
+                    <th class="settlement__heading">ESTADO</th>
+                    <th class="settlement__heading">ACCIONES</th>
+                    <th class="settlement__heading">VALOR NETO</th>
+                    <th class="settlement__heading">VALOR CON SERVICIO</th>
                 </tr>
             </thead>
-            <tbody class="inventory-management__tbody" id="ordersContainer">
-                <!-- <tr class="inventory-management__row">
-                    <td class="inventory-management__cell">Azúcar Blanca</td>
-                    <td class="inventory-management__cell">Pizzas</td>
-                    <td class="inventory-management__cell">20</td>
-                    <td class="inventory-management__cell">✅</td>
-                    <td class="inventory-management__cell">
-                        <a class="inventory-management__link" href="#">Editar</a> | 
-                        <a class="inventory-management__link" href="#">Eliminar</a>
+            <tbody class="settlement__tbody" id="settlementContainer">
+                <!-- <tr class="settlement__row">
+                    <td class="settlement__cell">Azúcar Blanca</td>
+                    <td class="settlement__cell">Pizzas</td>
+                    <td class="settlement__cell">20</td>
+                    <td class="settlement__cell">✅</td>
+                    <td class="settlement__cell">
+                        <a class="settlement__link" href="#">Editar</a> | 
+                        <a class="settlement__link" href="#">Eliminar</a>
                     </td>
                 </tr>
-                <tr class="inventory-management__row">
-                    <td class="inventory-management__cell">champiñones</td>
-                    <td class="inventory-management__cell">Pizzas</td>
-                    <td class="inventory-management__cell">15</td>
-                    <td class="inventory-management__cell">❌</td>
-                    <td class="inventory-management__cell">
-                        <a class="inventory-management__link" href="#">Editar</a> | 
-                        <a class="inventory-management__link" href="#">Eliminar</a>
+                <tr class="settlement__row">
+                    <td class="settlement__cell">Champiñones</td>
+                    <td class="settlement__cell">Pizzas</td>
+                    <td class="settlement__cell">15</td>
+                    <td class="settlement__cell">❌</td>
+                    <td class="settlement__cell">
+                        <a class="settlement__link" href="#">Editar</a> | 
+                        <a class="settlement__link" href="#">Eliminar</a>
                     </td>
                 </tr> -->
             </tbody>
         </table>
     </section>
+    
 </main>
 
 <footer class="footer">
