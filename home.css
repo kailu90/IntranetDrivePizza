@@ -19,8 +19,8 @@ body {
     justify-content: center;
     background-color: transparent;
     width: 100vw;
-    height: max-content;
-    margin: 50px auto;
+    height: calc(100vh - 180px);
+    margin: 0 auto;
     align-items: center;
 }
 
@@ -83,8 +83,6 @@ body {
 
     .main_home {
         flex-direction: column;
-        margin-top: 50px; /* Agrega espacio en la parte superior */
-        height: auto; /* Permite que el contenedor crezca hacia abajo */
     }
   
     .cards_container {
