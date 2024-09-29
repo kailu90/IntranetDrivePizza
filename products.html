@@ -16,7 +16,7 @@
     <p class="parragraph">Selecciona los productos que se requieren para
     las labores del día a día</p>
     <form class="form_products" action="" method="POST" id="form">
-        <ul class="list_products">
+        <ul class="list_products" id="products-list">
             <li class="list_location">
                 <label>SEDE</label>
                 <select name="SEDE" id="location" required>
@@ -33,7 +33,7 @@
                 <label for="day_delivery">FECHA</label>
                 <input type="date" name="FECHA ENTREGA" id="day_delivery" required>
             </li>
-        <li class="product">
+        <!-- <li class="product">
             <label>ATÚN (unidad)</label>
             <select name="ATÚN" id="atun">
                 <option value="0">0</option>
@@ -598,7 +598,7 @@
                 <option value="5">5</option>
                 <option value="6">6</option>
             </select>
-        </li>
+        </li> -->
         <li class="product observation">  
             <label>OBSERVACIONES</label>  
             <textarea class="observation_box" name="OBSERVACIONES"></textarea>
