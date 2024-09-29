@@ -18,9 +18,10 @@ if (localStorage.getItem('order')) {
   const storageApiData = localStorage.getItem('productsInfo');
   const productsInfo = Object.entries(JSON.parse(storageApiData));
   const dataCorrected = productsInfo.map(product => {
-    const corrected = [product[0], {...product[1], name: product[1].name.trim()}];
+    const corrected = [product[0], {...product[1], name: product[1].nombre.trim()}];
     return corrected;
   })
+  console.log(dataCorrected);
 
   if (dataCorrected) {
     cart(order, dataCorrected);
@@ -49,9 +50,8 @@ function cart(order, apiData) {
       let quantityPrice;
       
       apiData.forEach(product => {
-        if (product[1].name === keyValue[0]) {
-  
-          const productPrice = parseFloat(product[1].price.split('$').join('').split('.').join('').trim());
+        if (product[1].nombre === keyValue[0]) {
+          const productPrice = parseFloat(product[1].precio.split('$').join('').split('.').join('').trim());
           
           const priceTimesQuantity = productPrice * parseInt(keyValue[1]);
           
