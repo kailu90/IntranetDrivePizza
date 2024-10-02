@@ -255,9 +255,9 @@ li {
     font-size: 20px;
 }
 
-.btn:hover {
+.btn_orders:hover {
     opacity: 0.8;
-    cursor: pointer;
+    cursor:pointer;
 }
 
 @media (max-width: 600px) {
