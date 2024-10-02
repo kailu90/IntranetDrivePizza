@@ -119,12 +119,20 @@ function createPresentationSelect(product, stock) {
   defaultOption.selected = true;
   select.appendChild(defaultOption);
 
+  const dontCountStock = [ 'MASA x 140gr','MASA x 250gr', 'POLLO', 'MASA x 350gr', 'MASA x 450gr', 'MASA x 700gr'];
+
   presentations.forEach((presentation) => {
     const presentationValue = parseInt(presentation);
-    if (stock >= presentationValue) {
+    if (dontCountStock.includes(product.nombre)) {
       const option = document.createElement("option");
       option.value = presentationValue;
-      option.textContent = `${presentationValue} ${product.categoria}`;
+      option.textContent = presentationValue > 1 ?`${presentationValue} ${product.categoria}s` : `${presentationValue} ${product.categoria}`;
+      select.appendChild(option);
+      hasOptions = true;
+    } else if (stock >= presentationValue) {
+      const option = document.createElement("option");
+      option.value = presentationValue;
+      option.textContent = presentationValue > 1 ?`${presentationValue} ${product.categoria}s` : `${presentationValue} ${product.categoria}`;
       select.appendChild(option);
       hasOptions = true;
     }
