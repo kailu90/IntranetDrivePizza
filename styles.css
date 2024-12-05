@@ -358,11 +358,21 @@ li {
     border-bottom: 1px solid black;
 }
 
+.history-management__row th:nth-child(4) {
+  display: none;
+}
+
+
 .table_body td {
    padding: 5px;
    width: max-content;
    border-bottom: 1px solid black;
 }
+
+.history-management__tbody td:nth-child(4) {
+  display: none;
+}
+
 
 .table_body tr td:nth-child(2){
     font-weight: bold;
