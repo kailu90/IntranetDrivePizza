@@ -480,20 +480,280 @@ li {
 
 
 
-
-
-
-
-
-/*********************CONFIRMACIÓN ENVIO PEDIDO*********************************/
-
-.envio_ok_main {
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #ffffff;
+  }
+  
+  :root {
+    --color-dark: #000000; 
+    --color-light: #ffffff; 
+    --color-background: #f4f4f4;
+    --color-text:  #333;
+  }
+  
+  html {
+    font-size: 62.5%;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .header {
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100vw;
+  }
+  
+  .header img {
+    width: 100px;
+  }
+  
+  .header .header__title {
+    font-size: 3rem;
+  }
+  
+  .header__menu .header__list {
+    list-style: none;
+    display: flex;
+    font-size: 1.6rem;
+  }
+  
+  .header__menu .header__item {
+    margin-left: 1rem;
+  }
+  
+  .header__menu .header__link {
+    color: var(--color-light);
+    text-decoration: none;
+  }
+  
+  .sidebar {
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    width: 220px;
+    padding: 1rem;
+    position: fixed;
+    top: 104px;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .sidebar .sidebar__nav .sidebar__list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar .sidebar__nav .sidebar__list .sidebar__item {
+    margin: 1rem 0;
+  }
+  
+  .sidebar .sidebar__nav .sidebar__list .sidebar__item .sidebar__link {
+    color:var(--color-light);
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 1.6rem;
+    transition: background-color 0.3s;
+  }
+  
+  .sidebar__list .sidebar__item .sidebar__link:hover {
+    background-color: #1abc9c;
+  }
+  
+  .content {
+    margin-left: 240px;
+    margin-top: 120px;
+    margin-bottom: 50px;
+    padding: 2rem;
+    flex: 1;
+  }
+  
+  .dashboard-overview {
+    margin-bottom: 2rem;
+  }
+  
+  .dashboard-overview h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .cards {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .card {
+    background-color:var(--color-light);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1;
+    margin-right: 1rem;
+  }
+  
+  .card:last-child {
+    margin-right: 0;
+  }
+  
+  .card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    color: #2c3e50;
+  }
+  
+  .card p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1abc9c;
+  }
+  
+  
+  
+  
+  
+  
+  /***Ocultar Iframe para imprimir sin ver contenido desde Dashboard**/
+  
+  #hiddenIframe {
+    display: none;
+  }
+  
+  
+  /***Estilos para poder imprimir en letra más grande en impresora térmica**/
+  
+  @media print {
+    body {
+      width: 80mm; /* O ajusta el ancho según sea necesario */
+      font-size: 16px !important;
+    }
+  }
+  
+  
+  
+  
+  
+  
+  /*******************DASHBOARD*********************/
+  
+  .content__inventory-management select {
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 2px;
+    background: transparent;
+    color: black;
+  }
+  
+  
+  
+  .inventory-management__title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  
+  .inventory-management h2 , .price-list__title , .settlement__title{
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  table , .price-list__table , .settlement__table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--color-light);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  thead , .price-list__thead , .settlement__thead  {
+    background-color: var(--color-dark);
+    color: var(--color-light);
+  }
+  
+  thead th , .price-list__thead th , .settlement__thead th {
+    padding: 1rem;
+    text-align: center  ;
+  }
+  
+  tbody tr , .price-list__tbody tr , .settlement__tbody tr {
+    border-bottom: 1px solid #ccc;
+  }
+  
+  tbody td , .price-list__tbody td , .settlement__tbody td{
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  tbody tr:hover , .price-list__tbody tr:hover , .settlement__tbody tr:hover{
+    background-color: #f2f2f2;
+  }
+  
+  tbody td a , .price-list__tbody td a , .settlement__tbody td a{
+    color: #3498db;
+    text-decoration: none;
+    margin-right: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .btn-agregar-stock {
+    text-decoration: none;
+    background-color: #000000;
+    color: #ffffff; 
+    margin: 10px; 
+    padding: 5px;
+    border-radius: 30px;
+  }
+  
+  .btn-agregar-stock:hover {
+   opacity: 0.5;
+  }
+  
+  .footer {
+    background-color:var(--color-dark);
+    color:var(--color-light);
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin-left: 220px;
+  }
+  
+  
+  
+  
+  
+  
+  /*********************CONFIRMACIÓN ENVIO PEDIDO*********************************/
+  
+  .envio_ok_main {
     width: 100vw;
     height: 100vh;
     background-color: black;
-}
-
-.confirmation_container {
+  }
+  
+  .confirmation_container {
     background-color: black;
     width: 100%;
     height: 100vh;
@@ -506,20 +766,218 @@ li {
     gap: 30px;
     font-size: 30px;
     text-align: center;
-}
-
-.confirmation_container img:nth-child(1) {
+  }
+  
+  .confirmation_container img:nth-child(1) {
     width: 200px;
-}
-
-.confirmation_container img:nth-child(2) {
+  }
+  
+  .confirmation_container img:nth-child(2) {
     width: 50px;
-}
-
-.confirmation_container {
+  }
+  
+  .confirmation_container {
     color: white ;
-
-}
-
-
-
+  
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /*********************ESTILOS DE IMPRESION OCULTA*******************/
+  
+  .car_header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px 20px;
+    border-bottom: 2px solid gray ;    
+  }
+  
+  .car_header h1 {
+    display: flex;
+    align-items:end;
+    font-size: 30px;
+    margin-top: 20px;
+  }
+  
+  .car_header img {
+    display: flex;
+    align-items:end;
+    width: 200px;
+  }
+  
+  .car_container {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    padding: 20px 0;
+    margin: 0 auto;
+    font-size: 16px;
+  }
+  
+  .car_data_branch , .car_data_date {
+    display: flex;
+    justify-content: space-between;
+    max-width: 400px;
+    margin: 0 auto;    
+  }
+  
+  .car_data_branch p , .car_data_date p {
+    display: flex;
+    justify-content: center;
+    margin: 5px auto;
+  }
+  
+  .car_data_branch p:nth-child(1) , .car_data_date p:nth-child(1) {
+    font-weight: bold;
+  }
+  
+  .car_container button {
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    max-width: 400px;
+    margin: 10px auto;
+    background-color: green;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .car_container button:nth-child(3) {
+    background-color: grey;
+  }
+  
+  .table_head th {
+    width: max-content;
+    padding: 10px;
+    border-bottom: 1px solid black;
+  }
+  
+  .table_body td {
+   padding: 5px;
+   width: max-content;
+   border-bottom: 1px solid black;
+  }
+  
+  .table_body tr td:nth-child(2){
+    font-weight: bold;
+  }
+  
+  .car_data_observation {
+    text-align: center; 
+    padding: 20px; 
+    border: 1px solid black; 
+    margin: 20px 0;
+    width: 80%;
+    max-width: 400px; 
+    margin-left: auto; 
+    margin-right: auto; 
+    border-radius: 8px; 
+  }
+  
+  .car_data_observation p:nth-child(1) {
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .car_product_list {
+    color: black;
+    width: 90%;
+    margin: 20px auto;
+    max-width: 400px;
+    text-align: center;
+    border-collapse: collapse;
+    table-layout: fixed;
+   
+  }
+  
+  .car_product_list li:nth-child(1) , .car_product_list li:nth-child(2)  {
+    font-weight: bold;
+  }
+  
+  .car_total {
+    display: flex;
+    font-weight: bold;
+    width: 80%;
+    justify-content: center;
+    gap: 50px;
+    margin: 5px auto;
+  }
+  
+  .btn-container {
+    display: flex;
+    max-width: 400px;
+    margin: 10px auto 30px auto;
+    gap: 30px;
+  }
+  
+  .btn-container button {
+    padding: 5px;
+  }
+  
+  .btn-container button:nth-child(1) {
+    background-color: gray;
+    border: none;
+  }
+  
+  .btn-container button:nth-child(2) {
+    background-color: green;
+    border: none;
+  }
+  
+  .car_container button:hover {
+    filter: brightness(0.7);
+  }
+  
+  @media (max-width: 900px) {
+    .car_container {
+        font-size: 12px;
+    }
+  
+    .car_product {
+        height: 20px;
+        padding: 0px;
+    }
+  }
+  
+  @media (max-width: 800px) {
+    .car_header {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+  
+    .car_header h1 {
+        margin: 20px 0 0 0;
+        font-size: 30px;
+    }
+  
+    .car_header img {
+        width: 150px;
+    }
+    
+    .car_container {
+        padding: 0px;
+    }
+  
+    .btn-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+  
+    .car_container button {
+        height: 30px;
+    }     
+  }
