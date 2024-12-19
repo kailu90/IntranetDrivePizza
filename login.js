@@ -5,7 +5,8 @@ const users = {
     "Cabecera": "Cabe123",
     "Piedecuesta": "Piede123",
     "Acropolis": "Acro123",
-    "Planta": "Planta123"
+    "Planta": "Planta123",
+    "Unico": "Unico123"
 };
 
 // Función para validar usuario y contraseña
