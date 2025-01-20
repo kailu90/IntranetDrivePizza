@@ -21,8 +21,7 @@ if (localStorage.getItem('order')) {
     const corrected = [product[0], {...product[1], name: product[1].name.trim()}];
     return corrected;
   })
-  console.log(dataCorrected);
-  console.log(order);
+
   if (dataCorrected) {
     cart(order, dataCorrected);
   }
@@ -32,11 +31,11 @@ function cart(order, apiData) {
   let totalPrice = 0;
   
   order.forEach((keyValue, current) => {
-    if (keyValue[0] === "SEDE") {
+    if (keyValue[0] === "user") {
       sedeParagraph.textContent = keyValue[1];
-    } else if (keyValue[0] === "FECHA ENTREGA") {
+    } else if (keyValue[0] === "deliveryDate") {
       deliberyDateParagraph.textContent = keyValue[1];      
-    } else if (keyValue[0] === "OBSERVACIONES") {
+    } else if (keyValue[0] === "orderNotes") {
       commentParagraph.textContent = keyValue[1];
     } else {
       const item = document.createElement('tr');
@@ -72,7 +71,8 @@ function cart(order, apiData) {
         
         item.append(itemName, count, quantityPrice);
         listContainer.append(item);
-        if (keyValue[0] !== "SEDE" && keyValue[0] !== "OBSERVACIONES" && keyValue[0] !== "FECHA ENTREGA") {
+
+        if (keyValue[0] !== "user" && keyValue[0] !== "orderNotes" && keyValue[0] !== "deliveryDate") {
           products++;
         }
       }
@@ -101,17 +101,16 @@ function cart(order, apiData) {
       }
 
       order.forEach(item => {
-        if (item[0] === "SEDE") {
+        if (item[0] === "user") {
           orderWithPrices.user = item[1];
-        } else if (item[0] === "FECHA ENTREGA") {
+        } else if (item[0] === "deliveryDate") {
           orderWithPrices.deliveryDate = item[1];
-        } else if (item[0] === "OBSERVACIONES") {
+        } else if (item[0] === "orderNotes") {
           orderWithPrices.orderNotes = item[1];
         } else {
           orderWithPrices.products.push({name: item[0], quantity: item[1], totalPrice: item[2]});
         }
       });
-      
 }
 
 async function postData(orderData) {
@@ -138,7 +137,6 @@ async function postData(orderData) {
 document.getElementById('btn_edit').addEventListener('click', function(event) {
   event.preventDefault(); // Evita el comportamiento predeterminado del botón
   history.back(); // Regresa a la página anterior sin refrescar
-  console.log("botón editar");
 });
 
 document.getElementById('btn_confirm').addEventListener('click', async function(event) {
@@ -148,10 +146,9 @@ document.getElementById('btn_confirm').addEventListener('click', async function(
     if (!orderWithPrices) {
       throw new Error("No se encontró el pedido en el localStorage");
     }
-    console.log(orderWithPrices);
     await postData(orderWithPrices);
 
-    //window.location.href = 'envioOK.html';
+    window.location.href = 'envioOK.html';
   } catch (error) {
     console.error("Error al procesar el pedido: ",error);
   }
