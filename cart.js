@@ -18,11 +18,11 @@ if (localStorage.getItem('order')) {
   const storageApiData = localStorage.getItem('productsInfo');
   const productsInfo = Object.entries(JSON.parse(storageApiData));
   const dataCorrected = productsInfo.map(product => {
-    const corrected = [product[0], {...product[1], name: product[1].nombre.trim()}];
+    const corrected = [product[0], {...product[1], name: product[1].name.trim()}];
     return corrected;
   })
   console.log(dataCorrected);
-
+  console.log(order);
   if (dataCorrected) {
     cart(order, dataCorrected);
   }
@@ -30,7 +30,7 @@ if (localStorage.getItem('order')) {
 
 function cart(order, apiData) {
   let totalPrice = 0;
-
+  
   order.forEach((keyValue, current) => {
     if (keyValue[0] === "SEDE") {
       sedeParagraph.textContent = keyValue[1];
@@ -50,8 +50,8 @@ function cart(order, apiData) {
       let quantityPrice;
       
       apiData.forEach(product => {
-        if (product[1].nombre === keyValue[0]) {
-          const productPrice = parseFloat(product[1].precio.split('$').join('').split('.').join('').trim());
+        if (product[1].name === keyValue[0].trim()) {
+          const productPrice = parseFloat(product[1].price);
           
           const priceTimesQuantity = productPrice * parseInt(keyValue[1]);
           
@@ -102,23 +102,21 @@ function cart(order, apiData) {
 
       order.forEach(item => {
         if (item[0] === "SEDE") {
-          orderWithPrices.SEDE = item[1];
+          orderWithPrices.user = item[1];
         } else if (item[0] === "FECHA ENTREGA") {
-          orderWithPrices['FECHA ENTREGA'] = item[1];
+          orderWithPrices.deliveryDate = item[1];
         } else if (item[0] === "OBSERVACIONES") {
-          orderWithPrices['OBSERVACIONES'] = item[1];
+          orderWithPrices.orderNotes = item[1];
         } else {
           orderWithPrices.products.push({name: item[0], quantity: item[1], totalPrice: item[2]});
         }
       });
       
-      orderWithPrices.orderPrice = totalPriceFormated;
-      orderWithPrices.finalPrice = finalPriceFormated;
 }
 
 async function postData(orderData) {
   try {
-    const response = await fetch("https://api-pizzeria.vercel.app/api/v1/orders", {
+    const response = await fetch("https://api-pizzeria.vercel.app/api/v2/orders", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -127,7 +125,7 @@ async function postData(orderData) {
     });
     
     if(!response.ok) {
-      throw new Error(`error status: ${respond.status}`);
+      throw new Error(`error status: ${response.status}`);
     }
     
     const data = await response.json();
@@ -153,7 +151,7 @@ document.getElementById('btn_confirm').addEventListener('click', async function(
     console.log(orderWithPrices);
     await postData(orderWithPrices);
 
-    window.location.href = 'envioOK.html';
+    //window.location.href = 'envioOK.html';
   } catch (error) {
     console.error("Error al procesar el pedido: ",error);
   }

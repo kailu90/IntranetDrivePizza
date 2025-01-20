@@ -19,7 +19,7 @@
         <ul class="list_products" id="products-list">
             <li class="list_location">
                 <label>SEDE</label>
-                <select name="SEDE" id="location" required>
+                <select name="user" id="location" required>
                     <option value="" disabled selected>Seleccionar</option>
                     <option value="ACROPOLIS">ACROPOLIS</option>
                     <option value="CABECERA">CABECERA</option>
@@ -32,7 +32,7 @@
             </li>
             <li class="day_delivery">
                 <label for="day_delivery">FECHA</label>
-                <input type="date" name="FECHA ENTREGA" id="day_delivery" required>
+                <input type="date" name="deliveryDate" id="day_delivery" required>
             </li>
         <!-- <li class="product">
             <label>ATÚN (unidad)</label>
@@ -603,7 +603,7 @@
     </ul>   
     <li class="observation">  
         <label>OBSERVACIONES</label>  
-        <textarea class="observation_box" name="OBSERVACIONES"></textarea>
+        <textarea class="observation_box" name="orderNotes"></textarea>
     </li>     
     <button class="btn_orders" type="submit" id="btn_orders">Enviar Pedido</button>
     </form>
