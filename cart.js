@@ -77,22 +77,20 @@ function cart(order, apiData) {
         }
       }
       });
-      const totalPriceFormated = new Intl.NumberFormat('es-CO', {
-        style: 'currency',
-        currency: 'COP',
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 2
-      }).format(totalPrice);
-
+      
       let finalPrice = ((15 * totalPrice) / 100) + totalPrice;
-      const finalPriceFormated = new Intl.NumberFormat('es-CO', {
+      totalPriceParagraph.textContent = new Intl.NumberFormat('es-CO', {
         style: 'currency',
         currency: 'COP',
         minimumFractionDigits: 0,
-        maximumFractionDigits: 2
+        maximumFractionDigits: 2 
+      }).format(totalPrice);
+      finalPriceParagraph.textContent = new Intl.NumberFormat('es-CO', {
+        style: 'currency',
+        currency: 'COP',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2 
       }).format(finalPrice);
-      totalPriceParagraph.textContent = totalPriceFormated;
-      finalPriceParagraph.textContent = finalPriceFormated;
       
       productsCount.textContent = products;
       
@@ -112,8 +110,8 @@ function cart(order, apiData) {
         }
       });
       
-      orderWithPrices.orderPrice = totalPriceFormated;
-      orderWithPrices.finalPrice = finalPriceFormated;
+      orderWithPrices.orderPrice = totalPrice;
+      orderWithPrices.finalPrice = finalPrice;
 }
 
 async function postData(orderData) {
