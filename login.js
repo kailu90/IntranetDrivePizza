@@ -1,12 +1,32 @@
 const users = {
-    "CarlosZ": "Carlos123",
-    "MegaMall": "Mega123",
-    "Cañaveral": "Caña123",
-    "Cabecera": "Cabe123",
-    "Piedecuesta": "Piede123",
-    "Acropolis": "Acro123",
-    "Planta": "Planta123",
-    "Unico": "Unico123"
+    "Admin": {
+       sede : "Admin",
+       password : "Admin2025",       
+    },
+    "MegaMall": {
+       sede : "MEGAMALL",
+       password : "Mega123",       
+    },
+    "Cañaveral": {
+       sede : "CAÑAVERAL",
+       password : "Caña123",       
+    },
+    "Cabecera": {
+       sede : "CABECERA",
+       password : "Cabe123",       
+    },
+    "Piedecuesta": {
+       sede : "PIEDECUESTA",
+       password : "Piede123",       
+    },
+    "Planta": {
+       sede : "PLANTA",
+       password : "Plantas123",       
+    },
+    "Unico": {
+       sede : "UNICO",
+       password : "Unico123",       
+    },
 };
 
 // Función para validar usuario y contraseña
@@ -31,8 +51,14 @@ function validateLogin(event) {
     }
 
     // Verificar si el usuario existe y la contraseña es correcta
-    if (users[username] && users[username] === password) {
+    if (users[username] && users[username].password === password) {
+
+        // Almacenar los datos del usuario en localStorage.
+
+        localStorage.setItem("userdata", JSON.stringify(users[username]))
+
         // Redirigir a la página de home si la validación es correcta
+        
         window.location.href = "home.html";
     } else {
         // Mostrar error si el usuario o la contraseña son incorrectos
