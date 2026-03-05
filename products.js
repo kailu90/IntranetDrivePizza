@@ -41,12 +41,24 @@ async function getProducts(url) {
     }
 
     const data = await response.json();
-    if (Object.keys(data).length !== 0) {
-      localStorage.setItem('productsInfo', JSON.stringify(data));
+
+    // ✅ FIX: Guardar en localStorage solo si hay espacio, pero siempre retornar data
+    if (data && Object.keys(data).length !== 0) {
+      try {
+        localStorage.setItem('productsInfo', JSON.stringify(data));
+      } catch (storageError) {
+        console.warn('⚠️ No se pudo guardar en localStorage (cuota excedida). Continuando sin caché.', storageError);
+        // Limpiar entradas viejas para liberar espacio
+        localStorage.removeItem('productsInfo');
+        localStorage.removeItem('order');
+      }
     }
-    return data;
+
+    return data; // ✅ SIEMPRE retorna data, independientemente del localStorage
+
   } catch (error) {
     console.error('Error al encontrar la información de los productos:', error);
+    return []; // ✅ FIX: Retorna array vacío en lugar de undefined
   }
 }
 
@@ -55,6 +67,17 @@ getProducts('https://api-pizzeria.vercel.app/api/v2/products')
   .catch(error => console.log(error));
 
 function CreateProducstForm(productsData) {
+  // ✅ FIX: Validar que productsData sea un array con elementos
+  if (!productsData || !Array.isArray(productsData) || productsData.length === 0) {
+    console.error('No se recibieron productos o el formato es incorrecto.');
+    const productsContainer = document.getElementById('products-list');
+    const errorMsg = document.createElement('li');
+    errorMsg.textContent = 'No se pudieron cargar los productos. Intenta recargar la página.';
+    errorMsg.style.color = 'red';
+    productsContainer.appendChild(errorMsg);
+    return;
+  }
+
   console.log(productsData);
   const productsContainer = document.getElementById('products-list');
 
