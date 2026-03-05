@@ -21,9 +21,9 @@ function saveOrder(data) {
     }
   });
 
-
   if (Object.keys(newOrder).length !== 0) {
-    localStorage.setItem('order', JSON.stringify(newOrder));
+    // ✅ Cambiar a sessionStorage
+    sessionStorage.setItem('order', JSON.stringify(newOrder));
   }
 }
 
@@ -31,34 +31,17 @@ async function getProducts(url) {
   try {
     const response = await fetch(url, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      }
+      headers: { 'Content-Type': 'application/json' }
     });
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
     const data = await response.json();
-
-    // ✅ FIX: Guardar en localStorage solo si hay espacio, pero siempre retornar data
-    if (data && Object.keys(data).length !== 0) {
-      try {
-        localStorage.setItem('productsInfo', JSON.stringify(data));
-      } catch (storageError) {
-        console.warn('⚠️ No se pudo guardar en localStorage (cuota excedida). Continuando sin caché.', storageError);
-        // Limpiar entradas viejas para liberar espacio
-        localStorage.removeItem('productsInfo');
-        localStorage.removeItem('order');
-      }
-    }
-
-    return data; // ✅ SIEMPRE retorna data, independientemente del localStorage
+    return data; // ✅ Solo retorna, no guarda en ningún storage
 
   } catch (error) {
     console.error('Error al encontrar la información de los productos:', error);
-    return []; // ✅ FIX: Retorna array vacío en lugar de undefined
+    return [];
   }
 }
 
