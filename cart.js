@@ -11,21 +11,45 @@ let products = 0;
 let localStorageData;
 let orderWithPrices;
 
-if (localStorage.getItem('order')) {
+async function initCart() {
+  if (!localStorage.getItem('order')) return;
+
   localStorageData = localStorage.getItem('order');
   const order = Object.entries(JSON.parse(localStorageData));
 
+  let dataCorrected;
+
   const storageApiData = localStorage.getItem('productsInfo');
-  const productsInfo = Object.entries(JSON.parse(storageApiData));
-  const dataCorrected = productsInfo.map(product => {
-    const corrected = [product[0], {...product[1], name: product[1].name.trim()}];
-    return corrected;
-  })
+
+  if (storageApiData) {
+    // ✅ Si hay caché, la usa
+    const productsInfo = Object.entries(JSON.parse(storageApiData));
+    dataCorrected = productsInfo.map(product => {
+      const corrected = [product[0], { ...product[1], name: product[1].name.trim() }];
+      return corrected;
+    });
+  } else {
+    // ✅ FIX: Si no hay caché (cuota excedida), busca directo de la API
+    console.warn('⚠️ productsInfo no está en localStorage, obteniendo desde la API...');
+    try {
+      const response = await fetch('https://api-pizzeria.vercel.app/api/v2/products');
+      const apiData = await response.json();
+      dataCorrected = apiData.map((product, index) => {
+        return [String(index), { ...product, name: product.name.trim() }];
+      });
+    } catch (error) {
+      console.error('Error al obtener productos desde la API:', error);
+      return;
+    }
+  }
 
   if (dataCorrected) {
     cart(order, dataCorrected);
   }
 }
+
+// ✅ Reemplaza el bloque if original por la llamada async
+initCart();
 
 function cart(order, apiData) {
   let totalPrice = 0;
@@ -51,64 +75,59 @@ function cart(order, apiData) {
       apiData.forEach(product => {
         if (product[1].name === keyValue[0].trim()) {
           const productPrice = parseFloat(product[1].price);
-          
           const priceTimesQuantity = productPrice * parseInt(keyValue[1]);
-          
           const formattedPrice = new Intl.NumberFormat('es-CO', {
             style: 'currency',
             currency: 'COP',
             minimumFractionDigits: 0,
             maximumFractionDigits: 2 
-  
           }).format(priceTimesQuantity);
           totalPrice += priceTimesQuantity;
           quantityPrice = document.createElement('td');
-           quantityPrice.textContent = formattedPrice;
-           order[current].push(formattedPrice);
-           return;
-          }
-        })
+          quantityPrice.textContent = formattedPrice;
+          order[current].push(formattedPrice);
+          return;
+        }
+      });
         
-        item.append(itemName, count, quantityPrice);
-        listContainer.append(item);
+      item.append(itemName, count, quantityPrice);
+      listContainer.append(item);
 
-        if (keyValue[0] !== "user" && keyValue[0] !== "orderNotes" && keyValue[0] !== "deliveryDate") {
-          products++;
-        }
+      if (keyValue[0] !== "user" && keyValue[0] !== "orderNotes" && keyValue[0] !== "deliveryDate") {
+        products++;
       }
-      });
+    }
+  });
       
-      let finalPrice = ((15 * totalPrice) / 100) + totalPrice;
-      totalPriceParagraph.textContent = new Intl.NumberFormat('es-CO', {
-        style: 'currency',
-        currency: 'COP',
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 2 
-      }).format(totalPrice);
-      finalPriceParagraph.textContent = new Intl.NumberFormat('es-CO', {
-        style: 'currency',
-        currency: 'COP',
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 2 
-      }).format(finalPrice);
-      
-      productsCount.textContent = products;
-      
-      orderWithPrices = {
-        products: []
-      }
+  let finalPrice = ((15 * totalPrice) / 100) + totalPrice;
+  totalPriceParagraph.textContent = new Intl.NumberFormat('es-CO', {
+    style: 'currency',
+    currency: 'COP',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2 
+  }).format(totalPrice);
+  finalPriceParagraph.textContent = new Intl.NumberFormat('es-CO', {
+    style: 'currency',
+    currency: 'COP',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2 
+  }).format(finalPrice);
+  
+  productsCount.textContent = products;
+  
+  orderWithPrices = { products: [] };
 
-      order.forEach(item => {
-        if (item[0] === "user") {
-          orderWithPrices.user = item[1];
-        } else if (item[0] === "deliveryDate") {
-          orderWithPrices.deliveryDate = item[1];
-        } else if (item[0] === "orderNotes") {
-          orderWithPrices.orderNotes = item[1];
-        } else {
-          orderWithPrices.products.push({name: item[0], quantity: item[1], totalPrice: item[2]});
-        }
-      });
+  order.forEach(item => {
+    if (item[0] === "user") {
+      orderWithPrices.user = item[1];
+    } else if (item[0] === "deliveryDate") {
+      orderWithPrices.deliveryDate = item[1];
+    } else if (item[0] === "orderNotes") {
+      orderWithPrices.orderNotes = item[1];
+    } else {
+      orderWithPrices.products.push({ name: item[0], quantity: item[1], totalPrice: item[2] });
+    }
+  });
 }
 
 async function postData(orderData) {
@@ -121,20 +140,20 @@ async function postData(orderData) {
       body: JSON.stringify(orderData)
     });
     
-    if(!response.ok) {
+    if (!response.ok) {
       throw new Error(`error status: ${response.status}`);
     }
     
     const data = await response.json();
     return data;
   } catch (error) {
-   console.error(error);
+    console.error(error);
   } 
 }
  
 document.getElementById('btn_edit').addEventListener('click', function(event) {
-  event.preventDefault(); // Evita el comportamiento predeterminado del botón
-  history.back(); // Regresa a la página anterior sin refrescar
+  event.preventDefault();
+  history.back();
 });
 
 document.getElementById('btn_confirm').addEventListener('click', async function(event) {
@@ -145,9 +164,8 @@ document.getElementById('btn_confirm').addEventListener('click', async function(
       throw new Error("No se encontró el pedido en el localStorage");
     }
     await postData(orderWithPrices);
-
     window.location.href = 'envioOK.html';
   } catch (error) {
-    console.error("Error al procesar el pedido: ",error);
+    console.error("Error al procesar el pedido: ", error);
   }
 });
